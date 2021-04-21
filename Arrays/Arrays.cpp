@@ -1,5 +1,6 @@
 // Tinkering with arrays
 #include <iostream>
+#include "Sorter.h"
 
 using namespace std;
 
@@ -16,8 +17,8 @@ int main()
 {
     // Declaration and inicialization
     const int size = 10;
-    double vector[size] = { 10,20,30,40,50,60,70,80,90,100 };
-    double avg = 0;
+    double vector[size] = { 33,12,57,67,9,86,74,25,99,43 };
+    /*double avg = 0;
     double sum = 0;
     double max = 0;
     double min = 0;
@@ -38,7 +39,11 @@ int main()
 
     double* vector2 = update(vector, value, pos);
 
-    show(vector2, size);
+    show(vector2, size);*/
+
+    Sorter mySorter;
+    mySorter.bubbleSort(vector, size);
+    mySorter.showVector(vector, size);
 
     return 0;
 }
