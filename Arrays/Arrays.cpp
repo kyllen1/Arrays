@@ -1,19 +1,88 @@
-// Arrays.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-//
-
+// Tinkering with arrays
 #include <iostream>
+
+using namespace std;
+
+// Forward declaration of functions
+double average(double* vector, int size, int avg);
+double addUp(double* vector, int size, int sum);
+double maximum(double* vector, int size, int max);
+double minimum(double* vector, int size, int min);
+double* update(double* vector, double value, int pos);
+void show(double* vector, int size);
+
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    // Declaration and inicialization
+    const int size = 10;
+    double vector[size] = { 10,20,30,40,50,60,70,80,90,100 };
+    double avg = 0;
+    double sum = 0;
+    double max = 0;
+    double min = 0;
+    double value = 55;
+    int pos = 4;
+
+    avg = average(vector, size, avg);
+    cout << "Average: " << avg << endl;
+
+    sum = addUp(vector, size, sum);
+    cout << "Sum: " << sum << endl;
+
+    max = maximum(vector, size, max);
+    cout << "Max: " << max << endl;
+
+    min = minimum(vector, size, min);
+    cout << "Min: " << min << endl;
+
+    double* vector2 = update(vector, value, pos);
+
+    show(vector2, size);
+
+    return 0;
 }
 
-// Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
-// Depurar programa: F5 o menú Depurar > Iniciar depuración
+double average(double* vector, int size, int avg) {
+    for (int i = 0; i < size; i++) {
+        avg += vector[i];
+    }
+    avg = avg / size;
 
-// Sugerencias para primeros pasos: 1. Use la ventana del Explorador de soluciones para agregar y administrar archivos
-//   2. Use la ventana de Team Explorer para conectar con el control de código fuente
-//   3. Use la ventana de salida para ver la salida de compilación y otros mensajes
-//   4. Use la ventana Lista de errores para ver los errores
-//   5. Vaya a Proyecto > Agregar nuevo elemento para crear nuevos archivos de código, o a Proyecto > Agregar elemento existente para agregar archivos de código existentes al proyecto
-//   6. En el futuro, para volver a abrir este proyecto, vaya a Archivo > Abrir > Proyecto y seleccione el archivo .sln
+    return avg;
+}
+
+double addUp(double* vector, int size, int sum) {
+    for (int i = 0; i < size; i++) {
+        sum += vector[i];
+    }
+    return sum;
+}
+
+double maximum(double* vector, int size, int max) {
+    for (int i = 0; i < size; i++) {
+        if (vector[i] > max)
+            max = vector[i];
+    }
+    return max;
+}
+
+double minimum(double* vector, int size, int min) {
+    min = vector[0];
+    for (int i = 1; i < size; i++) {
+        if (vector[i] < min)
+            min = vector[i];
+    }
+    return min;
+}
+
+double* update(double* vector, double value, int pos) {
+    vector[pos] = value;
+
+    return vector;
+}
+
+void show(double* vector, int size) {
+    for (int i = 0; i < size; i++)
+        cout << vector[i] << ", ";
+}
